@@ -44,7 +44,7 @@ public class EssayQuestionController {
     }
 
     /**
-     * 修改简单题
+     * 修改简答题
      * @param essayQuestion
      * @return
      */

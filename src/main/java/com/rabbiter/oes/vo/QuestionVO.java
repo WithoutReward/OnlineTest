@@ -1,5 +1,6 @@
 package com.rabbiter.oes.vo;
 
+import com.rabbiter.oes.entity.EssayQuestion;
 import com.rabbiter.oes.entity.FillQuestion;
 import com.rabbiter.oes.entity.JudgeQuestion;
 import com.rabbiter.oes.entity.MultiQuestion;
@@ -12,6 +13,8 @@ public class QuestionVO {
     private JudgeQuestion judgeQuestion;
 
     private MultiQuestion multiQuestion;
+
+    private EssayQuestion essayQuestion;
 
     public String getType() {
         return type;
@@ -44,4 +47,8 @@ public class QuestionVO {
     public void setMultiQuestion(MultiQuestion multiQuestion) {
         this.multiQuestion = multiQuestion;
     }
+
+    public EssayQuestion getEssayQuestion(){return essayQuestion;}
+
+    public void setEssayQuestion(EssayQuestion essayQuestion){this.essayQuestion = essayQuestion;}
 }

@@ -84,7 +84,7 @@ public class EssayQuestion {
 
     @Override
     public String toString() {
-        return "FillQuestion{" +
+        return "EssayQuestion{" +
                 "questionId=" + questionId +
                 ", subject='" + subject + '\'' +
                 ", question='" + question + '\'' +

@@ -2,6 +2,7 @@ package com.rabbiter.oes.mapper;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.rabbiter.oes.entity.EssayQuestion;
 import com.rabbiter.oes.entity.FillQuestion;
 import com.rabbiter.oes.entity.JudgeQuestion;
 import com.rabbiter.oes.entity.MultiQuestion;
@@ -15,7 +16,8 @@ import org.apache.ibatis.annotations.Select;
 public interface AnswerMapper {
     @Select("select questionId, question, subject, score, section,level, \"选择题\" as type from multi_question where question like concat('%',#{question},'%') and subject like concat('%',#{subject},'%') and section like concat('%',#{section},'%')" +
             "union select questionId,question, subject, score, section,level, \"判断题\" as type  from judge_question where question like concat('%',#{question},'%') and subject like concat('%',#{subject},'%') and section like concat('%',#{section},'%')" +
-            "union select questionId,question, subject, score, section,level, \"填空题\" as type from fill_question where question like  concat('%',#{question},'%') and subject like concat('%',#{subject},'%') and section like concat('%',#{section},'%')")
+            "union select questionId,question, subject, score, section,level, \"填空题\" as type from fill_question where question like  concat('%',#{question},'%') and subject like concat('%',#{subject},'%') and section like concat('%',#{section},'%')" +
+            "union select questionId,question, subject, score, section,level, \"问答题\" as type from essay_question where question like  concat('%',#{question},'%') and subject like concat('%',#{subject},'%') and section like concat('%',#{section},'%')")
     IPage<AnswerVO> findAll(Page<AnswerVO> page, @Param("subject") String subject, @Param("section") String section, @Param("question") String question);
 
 
@@ -44,4 +46,12 @@ public interface AnswerMapper {
      */
     @Select("select questionId, subject, question, answer, analysis, level, section from judge_question where questionId = #{questionId}")
     JudgeQuestion findJudgeQuestionById(Long questionId);
+
+    /**
+     * 根据id查问答题
+     * @param questionId
+     * @return
+     */
+    @Select("select questionId, subject, question, answer, analysis, level, section from essay_question where questionId = #{questionId}")
+    EssayQuestion findEssayQuestionById(Long questionId);
 }

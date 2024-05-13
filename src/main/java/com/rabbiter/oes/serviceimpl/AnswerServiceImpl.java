@@ -2,7 +2,6 @@ package com.rabbiter.oes.serviceimpl;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.rabbiter.oes.entity.MultiQuestion;
 import com.rabbiter.oes.mapper.AnswerMapper;
 import com.rabbiter.oes.service.AnswerService;
 import com.rabbiter.oes.vo.AnswerVO;
@@ -37,6 +36,9 @@ public class AnswerServiceImpl implements AnswerService {
                 break;
             case "填空题":
                 questionVO.setFillQuestion(answerMapper.findFillQuestionById(questionId));
+                break;
+            case "问答题":
+                questionVO.setEssayQuestion(answerMapper.findEssayQuestionById(questionId));
                 break;
         }
         return questionVO;
